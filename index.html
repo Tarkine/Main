@@ -5,14 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="https://kit.fontawesome.com/eb6acfa7a8.js" crossorigin="anonymous"></script> <!--Font awesome kit https://fontawesome.com/-->
     <script src="js/app.js" defer></script>
     <title>Tarkine</title>
 </head>
 <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+    <header>
+        <div id="dropdown">
+            <button class="drop"><i class="fa-solid fa-circle-chevron-down"></i></button>
+            <div class="menu-content">
+                <a href="https://github.com/orgs/Tarkine/repositories" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Project Repositories</a>
+            </div>
+        </div>
+        <h1 id="title">Tarkine</h1>
+        
+    </header>
+    <main>
+        <section>
+            <div>
+                <button id="start-game" onclick="window.location.href='game.html';">Start Game</button>
+            </div>
+        </section>
+        <section>
+            <div id="about">
+                <h2>About</h2>
+                <p>Tarkine is a puzzle and decision based story game that takes the player on a journey to safety after a terrible plane crash. The player must find items, solve puzzles, and make the correct decisions to escape the forest.</p>
+            </div>
+        </section>
+        <section id="containerSection">
+            <div class="container">
+                <h2 id="team">Meet the team</h2>
+                
+                <img src="assets/crQRcode.png" alt="">
+                <img src="assets/mgQRcode.png" alt="">
+                <img src="assets/elQRcode.png" alt="">
+              </div>
+        </section>
+    </main>
+    <footer>
+        
+    </footer>
 </body>
 </html>

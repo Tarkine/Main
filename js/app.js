@@ -12,11 +12,9 @@ let button1 = document.getElementById('buttonOne');
 
 let button2 = document.getElementById('buttonTwo');
 
-let option1TextArray = ['text1', 'text2', 'text3'];
+let dialogueArray = ['text1', 'text2', 'text3'];
 
 let option2TextArray = ['text1', 'text2', 'text3'];
-
-
 
 // CONSTRUCTOR
 
@@ -26,14 +24,26 @@ let option2TextArray = ['text1', 'text2', 'text3'];
 
 // FUNCTIONS
 
+// save username input
+
+function userNamesubmit() {
+    let userNameEntered = document.getElementById("nameTextBox").value;
+    localStorage.setItem("username", userNameEntered);
+    return false;
+  }
+  
+// load username input into div
+
+  document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username");
+
 // Inventory Validation
 function inventoryValidation () {
 // Compares user inventory items (array) to required boat array items
-for (i = 0; i < inventoryLocalStorage.length; i++) {
+for (let i = 0; i < inventoryLocalStorage.length; i++) {
     let boatItems = boatArray;
     if (inventoryLocalStorage.includes(boatItems)) {
 // If the user has all 4 items, the boat array is compared to the win condition array
-        for (j = 0; j < boatArray.length; j++) {
+        for (let j = 0; j < boatArray.length; j++) {
             let winItems = winConArray;
 // If the boat array is === to the win condition array, they are allowed to move to the win screen
             if (boatArray.includes(winItems)) {
@@ -65,6 +75,8 @@ button2.addEventListener('click', () => {
 
 // EVENT HANDLERS
 
+
+  
 
 
 

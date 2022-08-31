@@ -83,19 +83,21 @@ body {
 #start-game:hover {
     background-color: #8f8f8f;
 }
-#about {
-    text-align: center;
-    color: #ebebeb;
-}
+
 #about > h2 {
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
     letter-spacing: 4px;
+    text-align: center;
+    color: #ebebeb;
 }
-#about > p {
+#type {
     font-family: 'Bebas Neue', cursive;
     font-size: 20px;
     color: #ebebeb;
+    white-space: nowrap;
+    margin: 0 auto;
+    text-align: center;
 }
 #team {
     margin-bottom: 3rem;
@@ -111,7 +113,6 @@ img {
     object-fit:cover;
     margin-left: 50px;
     -webkit-box-reflect:below 2px linear-gradient(transparent, transparent, #0004);
-    transform-origin:center;
     transform:perspective(800px) rotateY(25deg);
     transition:0.5s;
 }
@@ -120,11 +121,11 @@ img {
     padding-bottom: 8rem;
 }
 .container {
+    display: block;
     max-width:1200px;
     max-height:550px;
-    display:block;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
 }
 .container:hover img {
     opacity:0.3;
@@ -133,3 +134,11 @@ img {
     transform:perspective(800px) rotateY(0deg);
     opacity:1;
 }
+footer > p {
+    text-align: center;
+    color: #ebebeb;
+}
+#one {
+    margin-left: 5.8rem;
+}
+

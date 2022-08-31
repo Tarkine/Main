@@ -12,9 +12,7 @@ let button1 = document.getElementById('buttonOne');
 
 let button2 = document.getElementById('buttonTwo');
 
-let dialogueArray = ['text1', 'text2', 'text3'];
-
-let option2TextArray = ['text1', 'text2', 'text3'];
+let dialogueArray = ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8'];
 
 // CONSTRUCTOR
 
@@ -55,28 +53,52 @@ for (let i = 0; i < inventoryLocalStorage.length; i++) {
 
 };
 
-function changeOptionText () {
-    button1.innerHTML = option2TextArray[i];
-    button2.innerHTML = option2TextArray[j];
-}
-
 
 // EVENT LISTENERS
 
 // event listener for each button, change to no display to hid button
 
-button1.addEventListener('click', () => {
-    button1.style.display = 'none';
-});
-button2.addEventListener('click', () => {
-    button2.style.display = 'none';
-});
+// button1.addEventListener('click', hideButton1) 
+// button2.addEventListener('click', hideButton2) 
 
+button1.addEventListener('click', changeButtonText1) 
+button2.addEventListener('click', changeButtonText2) 
 
 // EVENT HANDLERS
 
+function hideButton1 () {
+    // add a conditional that only hides when screen changes to environment
 
-  
+    button1.style.display = 'none';
+};
 
+function hideButton2 () {
+    // add a conditional that only hides when screen changes to environment
+
+    button2.style.display = 'none';
+};
+
+function changeButtonText1 (event) {
+    let button1Clicked = event.target;
+    let eachClick = button1Clicked
+    console.log(eachClick);
+    for (let i = 0; i < dialogueArray.length; i++) {
+    if (eachClick === dialogueArray[i]) {
+     // add conditional that only changes if the screen doesn't change/there are no environment screens
+    let dialogueIndex = dialogueArray[i];
+    button1.innerHTML = dialogueIndex;
+    break;
+    }
+}
+};
+
+// function changeButtonText2 (event) {
+//     let button2Clicked = event.target;
+//     for (let i = 0; i < dialogueArray.length; i++) {
+//     // add conditional that only changes if the screen doesn't change/there are no environment screens
+//     let dialogueIndex = dialogueArray[i];
+//     button2.innerHTML = dialogueIndex;
+//     }
+// };
 
 

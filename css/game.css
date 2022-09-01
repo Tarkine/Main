@@ -1,0 +1,8 @@
+html {
+    height: 200%;
+  }
+.xyz {
+    background-color: aqua;
+    background-size: cover;
+    padding: 100px;
+}

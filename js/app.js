@@ -14,6 +14,10 @@ let button2 = document.getElementById('buttonTwo');
 
 let dialogueArray = ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8'];
 
+let trackedTextIndex = 0;
+
+let trackedTextIndex2 = 1;
+
 // CONSTRUCTOR
 
 
@@ -78,27 +82,25 @@ function hideButton2 () {
     button2.style.display = 'none';
 };
 
+
+// increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
+
 function changeButtonText1 (event) {
     let button1Clicked = event.target;
-    let eachClick = button1Clicked
-    console.log(eachClick);
-    for (let i = 0; i < dialogueArray.length; i++) {
-    if (eachClick === dialogueArray[i]) {
-     // add conditional that only changes if the screen doesn't change/there are no environment screens
-    let dialogueIndex = dialogueArray[i];
-    button1.innerHTML = dialogueIndex;
-    break;
+    button1.innerHTML = dialogueArray[trackedTextIndex];
+    trackedTextIndex+=2;
+    if (trackedTextIndex>=dialogueArray.length) {
+        hideButton1();
     }
 }
-};
 
-// function changeButtonText2 (event) {
-//     let button2Clicked = event.target;
-//     for (let i = 0; i < dialogueArray.length; i++) {
-//     // add conditional that only changes if the screen doesn't change/there are no environment screens
-//     let dialogueIndex = dialogueArray[i];
-//     button2.innerHTML = dialogueIndex;
-//     }
-// };
+function changeButtonText2 (event) {
+    let button2Clicked = event.target;
+    button2.innerHTML = dialogueArray[trackedTextIndex2];
+    trackedTextIndex2+=2;
+    if (trackedTextIndex2>=dialogueArray.length) {
+        hideButton2();
+    }
+};
 
 

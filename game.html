@@ -9,17 +9,17 @@
     <script src="https://kit.fontawesome.com/eb6acfa7a8.js" crossorigin="anonymous"></script> <!--Font awesome kit https://fontawesome.com/-->
     <script src="js/arraysandobjects.js" defer></script>
     <script src="js/game.js" defer></script>
-    <script src="js/changeBG.js" defer></script>
+    
     <title>Tarkine</title>
 </head>
 <body>
-    <header></header>
-    <main>
-        
+    <header>
+        <button class="openButton" onclick="openForm()"><strong>Open Form</strong></button>
         <div>
             <h1 id="userNameDiv"></h1>
         </div>
-        <form id="userNameForm">
+        <div id="popupForm">
+            <form class="formContainer" id="userNameForm">
             <fieldset>
             <legend>Username</legend>
                 <label>
@@ -28,26 +28,33 @@
                 </label>
             </fieldset>
                 <label>
-                    <input type="submit" onclick="userNamesubmit();"> 
+                    <input type="submit" onclick="submitAndCloseForm();"> 
                 </label>
-           </form>  
+           </form>
+        </div> 
+    </header>
+    <main>
+        
+        
         <section id="gameWindow">
 
         </section>
-            <button id="buttonOne">Option 1</button>
-            <button id="buttonTwo">Option 2</button>
-            <div class = 'hidden inventory'>
-        
-            </div>
-            
-            
-            <button type="Inventory" onclick="inventoryDisplay()">Inventory</button>
-            <button id="wheel" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
-            <button id="Key" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
-            <canvas id="inventorySpace"></canvas>
+         
             
         
     </main>
-    <footer></footer>
+    <footer>
+        <button id="buttonOne">Option 1</button>
+        <button id="buttonTwo">Option 2</button>
+        <div class = 'hidden inventory'>
+    
+        </div>
+        
+        
+        <button type="Inventory" onclick="inventoryDisplay()">Inventory</button>
+        <button id="wheel" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
+        <button id="Key" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
+        <canvas id="inventorySpace"></canvas>
+    </footer>
 </body>
 </html>

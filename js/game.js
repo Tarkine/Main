@@ -1,29 +1,54 @@
 'use strict';
+//console.logs
+// console.log(items[0])
+
+
+// GLOBAL VARIABLES
+const p = document.getElementById('buttonOne');
+let inventory = (JSON.parse(localStorage.getItem('inventory')) ? JSON.parse(localStorage.getItem('inventory')) : []); //ternary "?" if the condition (first) is true then action (second) position ":" same as else (set inventory)so that on refresh it wont reset array
+let element = document.getElementById('gameWindow')
+let child  = element.children;
+let totalPage = 35;
+let currentPage = 0;
+let i = 0;
+let body = document.querySelector('body')
+let btnOne = document.getElementById('buttonOne');
+let btnTwo = document.getElementById('buttonTwo');
+let items = [
+    "fuse",
+    "Steering Wheel",
+    "keys"
+]
+
+// CONSTRUCTOR
+
+
+// CONSTRUCTOR METHODS
+
+// EVENT LISTENERS
+
+// event listener for each button, change to no display to hid button
+button1.addEventListener('click', nextPage) 
+button2.addEventListener('click', nextPage) 
+
+// FUNCTIONS
 // This function takes two arguments, the element that it is modifying, and the speed that it modifies it.
-// function typingEffect(element, speed) {
-//     // Gatheres element text
-//     let text = element.innerHTML;
-//     element.innerHTML = '';
-//     let i = 0;
-//     // Using the setInterval function, we cycle through the elements text length and append the next character in the index.
-//     let timer = setInterval(function(){
-//         if (i < text.length) {
-//             element.append(text.charAt(i))
-//             i++
-//         } else {
-//             clearInterval(timer);
-//         }
-//         // The speed argument defines how fast the animation goes. Higher is slower, lower is faster
-//     }, speed)
-// }
-// // Gets the p element by its ID set in HTML
-// const p = document.getElementById('buttonOne');
-// // Uses the typingEffect function on the element
-// typingEffect(p, 40)
-
-
-
-
+function typingEffect(element, speed) {
+    // Gatheres element text
+    let text = element.innerHTML;
+    element.innerHTML = '';
+    let i = 0;
+    // Using the setInterval function, we cycle through the elements text length and append the next character in the index.
+    let timer = setInterval(function(){
+        if (i < text.length) {
+            element.append(text.charAt(i))
+            i++
+        } else {
+            clearInterval(timer);
+        }
+        // The speed argument defines how fast the animation goes. Higher is slower, lower is faster
+    }, speed)
+}
 function setItem() {
     localStorage.setItem('dialogue', JSON.stringify(dialogue));
 }
@@ -36,58 +61,6 @@ function returnItem() {
 }
 
 returnItem();
-
-// Initialize local storage for each array
-
-// let localStorageArrays = [
-//     "inventory",
-//     "winCon",
-//     "userLoc",
-//     "userName",
-//     "boatArray",
-//     "dialogue",
-//     "storyContentArray"
-// ]
-
-// function initializeLocalStorage(){
-//     for (let i=0; i < localStorageArrays.length; i++)
-//         var array = localStorageArrays[i];
-//         if (!JSON.parse(localStorage.getItem(array))) {
-//             localStorage.setItem(array, JSON.stringify(array))
-//     }
-// }
-
-// initializeLocalStorage();
-
-//inventory array
-
-let items = [
-    "fuse",
-    "Steering Wheel",
-    "keys"
-]
-
-// function itemObjects (name, amount) {
-//     this.name = name;
-//     this.amount = 0;
-// }
-
-// function buildItems() {
-//     for (let i = 0; i < items.length; i++) {
-//         var element = items[i];
-//         // itemObjects(element);
-//     }
-//     console.log(element.name);
-// }
-
-// buildItems();
-
-console.log(items[0])
-
-//inventory button that displays the inventory on click and makes it disappear when clicked again.
-//alright how the fuck do I do this...
-
-let inventory = (JSON.parse(localStorage.getItem('inventory')) ? JSON.parse(localStorage.getItem('inventory')) : []); //ternary "?" if the condition (first) is true then action (second) position ":" same as else (set inventory)so that on refresh it wont reset array
 function setItemInventory() {
     localStorage.setItem('inventory', JSON.stringify(inventory));
 }
@@ -100,7 +73,7 @@ function renderInventoryElements() {
     for (let i = 0; i < inventory.length; i++) {
         string += `<div>${inventory[i]}</div>`
     }
-    console.log(document.getElementsByClassName('inventory'))
+    //console.log(document.getElementsByClassName('inventory'))
     document.getElementsByClassName('inventory')[0].innerHTML = string
 }
 
@@ -120,73 +93,68 @@ function addToInventory(event) {
     setItemInventory();
 }
 
-console.log(inventory);
-// GLOBAL VARIABLES
-
-
-// CONSTRUCTOR
-
-
-// CONSTRUCTOR METHODS
-
-
-// FUNCTIONS
-let element = document.getElementById('gameWindow')
-let children = element.children;
-
-
-let btn = document.getElementById('buttonOne');
-// Add function for counting button clicks
-let totalPage = 35;
-let currentPage = 0;
 
 function addFirstPage (){
     // Loads first page automatically
     let firstPage = document.createElement(pageArr[0].tagName);
     firstPage.id = pageArr[0].id;
-    firstPage.innerText = 'Testing testing 123' //placeholder
+    let childOfNewNode = document.createElement('p')
+    childOfNewNode.innerText = pageArr[0].response1 //placeholder
+    typingEffect(childOfNewNode, 50)
     element.appendChild(firstPage)
+    firstPage.appendChild(childOfNewNode) 
 }
 addFirstPage()
-console.log(children[0].id);
-function changeB (){
-    
-    for (let i = 0; i < pageArr.length; i++) {
-        // Runs once but throws an error after the first iteration, says id of children is not defined
-        if (children[i].id === pageArr[i].id) {
-            children[i].remove();
-            let newNode = document.createElement(pageArr[i+1].tagName)
-            newNode.innerText = 'TESSSSSSSSSSSSSSSSSSSST'
-            newNode.id = pageArr[i+1].id
-            element.appendChild(newNode);
-        }
-        
-    };
-    // We can append a new node object with all the properties
-    
-    currentPage++;
-    if (currentPage === totalPage) {   
-        for (let i = 0; i < pageArr.length; i++) {
-            btn.removeEventListener('click', showNewImage);
-            
-        }
-    }
-};
 
 
-btn.addEventListener('click', changeB)  
+
+btnOne.addEventListener('click', bttnOne);
+function bttnOne () {
+    const bg = document.getElementById(pageArr[i].id);
+    i++
+    bg.remove();
+    let newNode = document.createElement(pageArr[i].tagName)
+    body.style.backgroundImage = urlArrTest[i-1];
+    let childOfNewNode = document.createElement('p')
+    childOfNewNode.innerText = pageArr[i].response1
+    typingEffect(childOfNewNode, 50)
+    newNode.id = pageArr[i].id
+    element.appendChild(newNode)
+    newNode.appendChild(childOfNewNode) 
+}
+btnTwo.addEventListener('click', bttnTwo);
+function bttnTwo () {
+    const bg = document.getElementById(pageArr[i].id);
+    i++
+    bg.remove();
+    let newNode = document.createElement(pageArr[i].tagName)
+    body.style.backgroundImage = urlArrTest[i-1];
+    let childOfNewNode = document.createElement('p')
+    childOfNewNode.innerText = pageArr[i].response2
+    typingEffect(childOfNewNode, 50)
+    newNode.id = pageArr[i].id
+    element.appendChild(newNode)
+    newNode.appendChild(childOfNewNode) 
+}
+
 
 // save username input
 
-function userNamesubmit() {
+function openForm() {
+    document.getElementById("userNameForm").style.display = "block";
+    document.getElementById("popupForm").style.display = "block";
+  }
+
+function submitAndCloseForm() {
+    document.getElementById("userNameForm").style.display = "none";
     let userNameEntered = document.getElementById("nameTextBox").value;
     localStorage.setItem("username", userNameEntered);
     return false;
-  }
+}
   
 // load username input into div
 
-  document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username");
+document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username");
 
 // Inventory Validation
 function inventoryValidation () {
@@ -206,20 +174,6 @@ for (let i = 0; i < inventoryLocalStorage.length; i++) {
 }
 
 };
-
-
-// EVENT LISTENERS
-
-// event listener for each button, change to no display to hid button
-
-// button1.addEventListener('click', hideButton1) 
-// button2.addEventListener('click', hideButton2) 
-
-button1.addEventListener('click', changeButtonText1) 
-button2.addEventListener('click', changeButtonText2) 
-
-// EVENT HANDLERS
-
 function hideButton1 () {
     // add a conditional that only hides when screen changes to environment
 
@@ -235,20 +189,18 @@ function hideButton2 () {
 
 // increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
 
-function changeButtonText1 (event) {
-    let button1Clicked = event.target;
-    button1.innerHTML = dialogue[trackedTextIndex];
-    trackedTextIndex+=2;
-    if (trackedTextIndex>=dialogue.length) {
+function nextPage (event) {
+    currentPage += 1;
+    if (currentPage === pageArr.length) {
         hideButton1();
+        hideButton2();
+        return;
     }
+    button1.innerHTML = pageArr[currentPage].choice1;
+    button2.innerHTML = pageArr[currentPage].choice2;
 }
 
-function changeButtonText2 (event) {
-    let button2Clicked = event.target;
-    button2.innerHTML = dialogue[trackedTextIndex2];
-    trackedTextIndex2+=2;
-    if (trackedTextIndex2>=dialogue.length) {
-        hideButton2();
-    }
-};
+
+
+// EVENT HANDLERS
+

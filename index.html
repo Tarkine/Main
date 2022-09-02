@@ -7,24 +7,45 @@
     <link type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="https://kit.fontawesome.com/eb6acfa7a8.js" crossorigin="anonymous"></script> <!--Font awesome kit https://fontawesome.com/-->
+    <script src="js/app.js" defer></script>
     <title>Tarkine</title>
 </head>
 <body>
-    <div class = 'hidden inventory'>
+    <header>
+        <div id="dropdown">
+            <button class="drop"><i class="fa-solid fa-circle-chevron-down"></i></button>
+            <div class="menu-content">
+                <a href="https://github.com/orgs/Tarkine/repositories" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Project Repositories</a>
+            </div>
+        </div>
+        <h1 id="title">Tarkine</h1>
         
-    </div>
-    
-    
-    <button type="Inventory" onclick="inventoryDisplay()">Inventory</button>
-    <button id="wheel" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
-    <button id="Key" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
-    <canvas id="inventorySpace"></canvas>
-    
-    
-    <p>aaisdknfalisjdnfalkjsnd</p>
-    <header></header>
-    <main></main>
-    <footer></footer>
-    <script src="js/app.js"></script>
+    </header>
+    <main>
+        <section>
+            <div>
+                <button id="start-game" >Start Game</button>
+            </div>
+        </section>
+        <section>
+            <div id="about">
+                <h2>About</h2>
+                <p id="type">Tarkine is a puzzle and decision based story game that takes the player on a journey to safety after a terrible plane crash. The player must find items, solve puzzles, and make the correct decisions to escape the forest.</p>
+            </div>
+        </section>
+        <section id="containerSection">
+            <div class="container">
+                <h2 id="team">Meet the team</h2>
+                
+                <img id="one" src="assets/crQRcode.png" alt="Camilla Rees">
+                <img src="assets/mgQRcode.png" alt="Michael Gazaway">
+                <img src="assets/elQRcode.png" alt="Ethan Luxton">
+              </div>
+        </section>
+    </main>
+    <footer>
+        <p id="test">adaolhie</p>
+        <p>&copy; 2022 Tarkine</p>
+    </footer>
 </body>
 </html>

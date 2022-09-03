@@ -9,7 +9,7 @@ let inventory = (JSON.parse(localStorage.getItem('inventory')) ? JSON.parse(loca
 let element = document.getElementById('gameWindow')
 let img = document.getElementById('asset')
 let child  = element.children;
-let totalPage = 35;
+let resetButton = document.getElementById("resetButton");
 let currentPage = 0;
 let i = 0;
 let body = document.querySelector('body')
@@ -27,7 +27,7 @@ let items = [
 // CONSTRUCTOR METHODS
 
 // EVENT LISTENERS
-
+resetButton.addEventListener('click', resetAndReplay);
 // event listener for each button, change to no display to hid button
 
 
@@ -113,6 +113,8 @@ addFirstPage()
 
 btnOne.addEventListener('click', bttnOne);
 function bttnOne () {
+    btnOne.style.display = 'block';
+    btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
     skip()
     i++
@@ -126,26 +128,32 @@ function bttnOne () {
     element.appendChild(newNode)
     newNode.appendChild(childOfNewNode)
     nextPage()
+    choice1()
+    choice2()
 }
 
 btnTwo.addEventListener('click', bttnTwo);
 function bttnTwo () {
+    btnOne.style.display = 'block';
+    btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
-        i++
-        rePrompt()
-        bg.remove();
-        let newNode = document.createElement(pageArr[i].tagName)
-        img.src = urlArrTest[i];
-        let childOfNewNode = document.createElement('p')
-        childOfNewNode.innerText = pageArr[i].response2
-        typingEffect(childOfNewNode, 50)
-        newNode.id = pageArr[i].id
-        element.appendChild(newNode)
-        newNode.appendChild(childOfNewNode)
-        nextPage()
-    
+    i++
+    rePrompt()
+    bg.remove();
+    let newNode = document.createElement(pageArr[i].tagName)
+    img.src = urlArrTest[i];
+    let childOfNewNode = document.createElement('p')
+    childOfNewNode.innerText = pageArr[i].response2
+    typingEffect(childOfNewNode, 50)
+    newNode.id = pageArr[i].id
+    element.appendChild(newNode)
+    newNode.appendChild(childOfNewNode)
+    nextPage()
+    choice1()
+    choice2()
     
 }
+//NEED TO ADD FUNCTION FOR DOUBLE RESPONSES
 // Need to know which sections to skip or re-prompt
 function skip (){
     if (i === 1 || i === 14) {
@@ -158,7 +166,16 @@ function rePrompt () {
     }
 
 }
-
+function choice1 () {
+    if (btnOne.innerHTML==='A') {
+        btnOne.style.display = 'none';
+    } 
+}
+function choice2 () {
+    if (btnTwo.innerHTML==='A') {
+        btnTwo.style.display = 'none';
+    }
+}
 // save username input
 
 function openForm() {
@@ -195,34 +212,19 @@ for (let i = 0; i < inventoryLocalStorage.length; i++) {
 }
 
 };
-function hideButton1 () {
-    // add a conditional that only hides when screen changes to environment
-
-    button1.style.display = 'none';
-};
-
-function hideButton2 () {
-    // add a conditional that only hides when screen changes to environment
-
-    button2.style.display = 'none';
-};
 
 
 // increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
 
-function nextPage (event) {
+function nextPage () {
     console.log(i)
-    currentPage++;
-    if (currentPage === pageArr.length) {
-        hideButton1();
-        hideButton2();
-        
-    }
-    button1.innerHTML = pageArr[i].choice1;
-    button2.innerHTML = pageArr[i].choice2;
+    btnOne.innerHTML = pageArr[i].choice1;
+    btnTwo.innerHTML = pageArr[i].choice2;
 }
 
-
+function resetAndReplay () {
+    localStorage.clear();
+}
 
 // EVENT HANDLERS
 

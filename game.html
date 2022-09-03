@@ -37,24 +37,25 @@
         
         
         <section id="gameWindow">
-
+            <img id="asset" src="" alt="">
         </section>
-         
+        <button id="buttonOne"></button>
+        <button id="buttonTwo"></button>
             
         
     </main>
     <footer>
-        <button id="buttonOne">Option 1</button>
-        <button id="buttonTwo">Option 2</button>
-        <div class = 'hidden inventory'>
-    
-        </div>
         
+    
+        <div class = 'hidden inventory'>
+            
+        </div>
         
         <button type="Inventory" onclick="inventoryDisplay()">Inventory</button>
         <button id="wheel" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
         <button id="Key" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
         <canvas id="inventorySpace"></canvas>
+        <button id="resetButton" onclick="resetAndReplay()">Reset</button>
     </footer>
 </body>
 </html>

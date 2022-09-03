@@ -7,6 +7,7 @@
 const p = document.getElementById('buttonOne');
 let inventory = (JSON.parse(localStorage.getItem('inventory')) ? JSON.parse(localStorage.getItem('inventory')) : []); //ternary "?" if the condition (first) is true then action (second) position ":" same as else (set inventory)so that on refresh it wont reset array
 let element = document.getElementById('gameWindow')
+let img = document.getElementById('asset')
 let child  = element.children;
 let totalPage = 35;
 let currentPage = 0;
@@ -28,8 +29,7 @@ let items = [
 // EVENT LISTENERS
 
 // event listener for each button, change to no display to hid button
-button1.addEventListener('click', nextPage) 
-button2.addEventListener('click', nextPage) 
+
 
 // FUNCTIONS
 // This function takes two arguments, the element that it is modifying, and the speed that it modifies it.
@@ -99,10 +99,13 @@ function addFirstPage (){
     let firstPage = document.createElement(pageArr[0].tagName);
     firstPage.id = pageArr[0].id;
     let childOfNewNode = document.createElement('p')
-    childOfNewNode.innerText = pageArr[0].response1 //placeholder
-    typingEffect(childOfNewNode, 50)
+    img.src = urlArrTest[0];
+    childOfNewNode.innerText = storyContentArray[0]
+    typingEffect(childOfNewNode, 40)
     element.appendChild(firstPage)
-    firstPage.appendChild(childOfNewNode) 
+    firstPage.appendChild(childOfNewNode)
+    btnOne.innerHTML = dialogue[0]
+    btnTwo.innerHTML = dialogue[1]
 }
 addFirstPage()
 
@@ -111,32 +114,50 @@ addFirstPage()
 btnOne.addEventListener('click', bttnOne);
 function bttnOne () {
     const bg = document.getElementById(pageArr[i].id);
+    skip()
     i++
     bg.remove();
     let newNode = document.createElement(pageArr[i].tagName)
-    body.style.backgroundImage = urlArrTest[i-1];
+    img.src = urlArrTest[i];
     let childOfNewNode = document.createElement('p')
     childOfNewNode.innerText = pageArr[i].response1
     typingEffect(childOfNewNode, 50)
     newNode.id = pageArr[i].id
     element.appendChild(newNode)
-    newNode.appendChild(childOfNewNode) 
+    newNode.appendChild(childOfNewNode)
+    nextPage()
 }
+
 btnTwo.addEventListener('click', bttnTwo);
 function bttnTwo () {
     const bg = document.getElementById(pageArr[i].id);
-    i++
-    bg.remove();
-    let newNode = document.createElement(pageArr[i].tagName)
-    body.style.backgroundImage = urlArrTest[i-1];
-    let childOfNewNode = document.createElement('p')
-    childOfNewNode.innerText = pageArr[i].response2
-    typingEffect(childOfNewNode, 50)
-    newNode.id = pageArr[i].id
-    element.appendChild(newNode)
-    newNode.appendChild(childOfNewNode) 
+        i++
+        rePrompt()
+        bg.remove();
+        let newNode = document.createElement(pageArr[i].tagName)
+        img.src = urlArrTest[i];
+        let childOfNewNode = document.createElement('p')
+        childOfNewNode.innerText = pageArr[i].response2
+        typingEffect(childOfNewNode, 50)
+        newNode.id = pageArr[i].id
+        element.appendChild(newNode)
+        newNode.appendChild(childOfNewNode)
+        nextPage()
+    
+    
 }
+// Need to know which sections to skip or re-prompt
+function skip (){
+    if (i === 1 || i === 14) {
+        i++ + 1   
+    }
+}
+function rePrompt () {
+    if (i === 3) {
+        i-- 
+    }
 
+}
 
 // save username input
 
@@ -190,14 +211,15 @@ function hideButton2 () {
 // increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
 
 function nextPage (event) {
-    currentPage += 1;
+    console.log(i)
+    currentPage++;
     if (currentPage === pageArr.length) {
         hideButton1();
         hideButton2();
-        return;
+        
     }
-    button1.innerHTML = pageArr[currentPage].choice1;
-    button2.innerHTML = pageArr[currentPage].choice2;
+    button1.innerHTML = pageArr[i].choice1;
+    button2.innerHTML = pageArr[i].choice2;
 }
 
 

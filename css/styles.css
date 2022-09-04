@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 * {
     box-sizing: border-box;
-   
 }
 body {
     margin: 0;
@@ -67,23 +66,50 @@ header > h1 {
 body {
     background-image: url(../assets/trees.jpg);
 }
-#start-game {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 36px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20rem;
-    padding-left:20px;
-    padding-right:20px;
-    background-color: #ebebeb;
-    border-color: #59595923;
-    box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.432);
-}
-#start-game:hover {
-    background-color: #8f8f8f;
-}
 
+#start-game {
+    margin-top: 20rem;
+    display: block;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    
+    color: #ebebeb;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Andale Mono, monospace;
+    
+    background: linear-gradient(90deg, green, rgb(255, 167, 2), rgb(2, 177, 11), rgb(5, 66, 180), blue, yellow, #668541, #06bb76, green);
+    background-size: 400%;
+    border-radius: 30px;
+    margin-left: 50%;
+    
+    border: none;
+  }
+#start-game:hover {
+    animation: animate 8s linear infinite;
+}
+@keyframes animate {
+    0% {
+        background-position: 0%;
+}
+    100% {
+        background-position: 400%;
+}
+}
+ #start-game:before {
+    background: linear-gradient(45deg, #f15523, #ef3224, #7c3697);
+    background-size: 400%;
+    border: none;
+    transition: 0.5%;
+  }
+#start-game:hover:before {
+    filter: blur(20px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+  }
 #about > h2 {
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
@@ -107,7 +133,15 @@ body {
     font-size: 36px;
     letter-spacing: 4px;
 }
-img {
+#createElement {
+    border-radius: 14px;
+    margin-top: 7rem;
+    width: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.container > img {
     width: 25%;
     height:90%;
     object-fit:cover;

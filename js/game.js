@@ -1,9 +1,19 @@
 'use strict';
 //console.logs
 // console.log(items[0])
-
-
 // GLOBAL VARIABLES
+let chromeAudio = document.getElementById('iframeAudio')
+chromeAudio.volume = 0.1;
+let notChromeAudio = document.getElementById('playAudio')
+notChromeAudio.volume = 0.1;
+let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+if (!isChrome){
+    chromeAudio.remove()
+}
+else {
+    notChromeAudio.remove()
+}
+let back = document.getElementById('back')
 const p = document.getElementById('buttonOne');
 let inventory = (JSON.parse(localStorage.getItem('inventory')) ? JSON.parse(localStorage.getItem('inventory')) : []); //ternary "?" if the condition (first) is true then action (second) position ":" same as else (set inventory)so that on refresh it wont reset array
 let element = document.getElementById('gameWindow')
@@ -12,6 +22,7 @@ let child  = element.children;
 let resetButton = document.getElementById("resetButton");
 let currentPage = 0;
 let i = 0;
+// let response3 = pageArr[i].response3
 let body = document.querySelector('body')
 let btnOne = document.getElementById('buttonOne');
 let btnTwo = document.getElementById('buttonTwo');
@@ -101,7 +112,7 @@ function addFirstPage (){
     let childOfNewNode = document.createElement('p')
     img.src = urlArrTest[0];
     childOfNewNode.innerText = storyContentArray[0]
-    typingEffect(childOfNewNode, 40)
+    typingEffect(childOfNewNode, 30)
     element.appendChild(firstPage)
     firstPage.appendChild(childOfNewNode)
     btnOne.innerHTML = dialogue[0]
@@ -116,20 +127,22 @@ function bttnOne () {
     btnOne.style.display = 'block';
     btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
-    skip()
+    skip1()
     i++
     bg.remove();
     let newNode = document.createElement(pageArr[i].tagName)
     img.src = urlArrTest[i];
     let childOfNewNode = document.createElement('p')
     childOfNewNode.innerText = pageArr[i].response1
-    typingEffect(childOfNewNode, 50)
+    typingEffect(childOfNewNode, 30)
     newNode.id = pageArr[i].id
     element.appendChild(newNode)
     newNode.appendChild(childOfNewNode)
     nextPage()
     choice1()
     choice2()
+    doubleResponse ();
+    console.log(i)
 }
 
 btnTwo.addEventListener('click', bttnTwo);
@@ -137,31 +150,43 @@ function bttnTwo () {
     btnOne.style.display = 'block';
     btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
-    i++
-    rePrompt()
+    i++;
+    rePrompt();
     bg.remove();
-    let newNode = document.createElement(pageArr[i].tagName)
+    let newNode = document.createElement(pageArr[i].tagName);
     img.src = urlArrTest[i];
-    let childOfNewNode = document.createElement('p')
-    childOfNewNode.innerText = pageArr[i].response2
-    typingEffect(childOfNewNode, 50)
-    newNode.id = pageArr[i].id
-    element.appendChild(newNode)
-    newNode.appendChild(childOfNewNode)
-    nextPage()
-    choice1()
-    choice2()
-    
+    let childOfNewNode = document.createElement('p');
+    childOfNewNode.innerText = pageArr[i].response2;
+    typingEffect(childOfNewNode, 30);
+    newNode.id = pageArr[i].id;
+    element.appendChild(newNode);
+    newNode.appendChild(childOfNewNode);
+    nextPage();
+    choice1();
+    choice2();
+    doubleResponse();
 }
-//NEED TO ADD FUNCTION FOR DOUBLE RESPONSES
-// Need to know which sections to skip or re-prompt
-function skip (){
-    if (i === 1 || i === 14) {
-        i++ + 1   
+function doubleResponse () {
+    if (pageArr[i].hasOwnProperty('response3')) {
+        let node = document.getElementById(pageArr[i].id);
+        let secondChild = document.createElement('p');
+        secondChild.innerText = pageArr[i].response3;
+        typingEffect(secondChild, 50)
+        node.appendChild(secondChild);
     }
 }
+// Need to know which sections to skip or re-prompt
+
+// Work on 9/4/22, loops
+function skip1() {
+    if (i === 22 || i === 1 || i === 14 || i === 19 || i === 6 || i === 17 || i === 18) {
+        i++ + 1
+        
+    }
+    
+}
 function rePrompt () {
-    if (i === 3) {
+    if (i === 3 || i === 7) {
         i-- 
     }
 
@@ -217,7 +242,7 @@ for (let i = 0; i < inventoryLocalStorage.length; i++) {
 // increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
 
 function nextPage () {
-    console.log(i)
+    
     btnOne.innerHTML = pageArr[i].choice1;
     btnTwo.innerHTML = pageArr[i].choice2;
 }
@@ -225,6 +250,9 @@ function nextPage () {
 function resetAndReplay () {
     localStorage.clear();
 }
-
+function backToHome (){
+    window.location.href='index.html';
+}
+back.addEventListener('click', backToHome)
 // EVENT HANDLERS
 

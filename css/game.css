@@ -6,9 +6,13 @@
     grid-auto-flow: row;
     width: 500px;
     height: 200px;
-    background: coral;
+    background: #334F33;
     margin-left: auto;
     margin-right: auto;
+}
+.inventory > p {
+    color: #D9D9D9;
+    font-family: 'Silkscreen', cursive;
 }
 #asset {
     display: block;
@@ -17,6 +21,7 @@
     margin-right: auto;
 }
 #popupForm {
+    color: #D9D9D9;
     display: none;
     margin:50px 0px; 
     padding:0px;
@@ -25,11 +30,26 @@
     border: 3px solid #f1f1f1;
     /* z-index: 9; */
 }
-
+header > button {
+    transition: all .5s ease;
+    margin-bottom: 10px;
+    background-color: #668541;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Silkscreen', cursive;
+}
+header > button:hover {
+    color: #001F3F;
+    background-color: #fff; 
+}
 .formContainer {
     max-width: 300px;
     padding: 10px;
     background-color: rgba(29, 133, 100, 0);
+}
+h1 {
+    color: #D9D9D9;
+    font-family: 'Silkscreen', cursive;
 }
 body {
     background-color: #0C111C;

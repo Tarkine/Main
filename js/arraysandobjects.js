@@ -25,7 +25,7 @@ let storyContentArray = [
     //11
     'You reach a clearing in the forest and see a pile of debris washed up on the bank of a river. You\'ll need to dig through the pile to see if there is anything of interest.',
     //12
-    'You  found a steering wheel and a fuse that matched the one you placed in the boat earlier.', 
+    'You  found another fuse that matched the one you placed in the boat earlier.', 
     //13
     'You exit the forest and find youself in a clearing. You find, after a quick survey of the clearing, an urn. It has a small but sealed opening flanked on either side by recesses the same size as the one that was in the gate.',
     //14
@@ -51,7 +51,7 @@ let storyContentArray = [
     //24
     'You start your repaired boat, first try...amazing that it had gas, too. You find civilization and are arrested for trespassing and grand larceny. Technically...you are now a Pirate...and that is pretty cool.',
     //25
-    'In loving memory of Ben Arno...hes not dead...we just like remembering him. Big shoutout to Google and the stack overflow crew, hawaiian shirts, and a very lenient late work policy.'
+    'In loving memory of Ben Arno...hes not dead...we just like remembering him. Big shoutout to Google and the stack overflow crew, and hawaiian shirts.'
 ];
 
 let dialogue = [
@@ -139,8 +139,10 @@ let urlArrTest = ['assets/page1.png',
                 'assets/page25c.png', 
                 'assets/page25d.png', 
                 'assets/page26.png', 
-                'assets/page31.png',, 
+                'assets/page31.png', 
                 'assets/page32.png',
+                'assets/page33.png',
+                'assets/ben.png',
                 
             ]
 let trackedTextIndex2 = 1;
@@ -195,7 +197,7 @@ const page5 = {
     choice2 : 'A',
     response1 : '',
     response2 : '',
-    background : '',
+    background : urlArrTest[4],
      
      
     tagName: 'div',
@@ -209,7 +211,7 @@ const page6 = {
     response1 : storyContentArray[5],
     response2 : '',
     response3: '',
-    background : '',
+    background : urlArrTest[5],
     tagName: 'div',
     id: 'page6'
 }
@@ -220,7 +222,7 @@ const page7 = {
     choice2 : dialogue[7],
     response1 : storyContentArray[6],
     response2 : '',
-    background : '',
+    background : urlArrTest[6],
      
      
     tagName: 'div',
@@ -233,7 +235,7 @@ const page8 = {
     choice2 : 'A',
     response1 : dialogue[8],
     response2 : dialogue[8],
-    background : '',
+    background : urlArrTest[7],
     tagName: 'div',
     id: 'page8'
 }
@@ -244,7 +246,7 @@ const page9 = {
     choice2 : 'A',
     response1 : '',
     response2 : '',
-    background : '',
+    background : urlArrTest[8],
      
      
     tagName: 'div',
@@ -258,7 +260,7 @@ const page10 = {
     choice2 : 'A',
     response1 : storyContentArray[7],
     response2 : storyContentArray[7],
-    background : '',
+    background : urlArrTest[9],
      
      
     tagName: 'div',
@@ -272,7 +274,7 @@ const page11 = {
     response1 : 'The Gate groans open, revealing the trail behind it.',
     response2 : '',
     response3 : '',
-    background : '',
+    background : urlArrTest[10],
      
      
     tagName: 'div',
@@ -285,7 +287,7 @@ const page12 = {
     choice2 : 'A',
     response1 : dialogue[11],
     response2 : '',
-    background : '',
+    background : urlArrTest[11],
      
      
     tagName: 'div',
@@ -298,7 +300,7 @@ const page13 = {
     choice2 : 'A',
     response1 : '',
     response2 : '',
-    background : '',
+    background : urlArrTest[12],
      
      
     tagName: 'div',
@@ -311,7 +313,7 @@ const page14 = {
     choice2 : dialogue[13],
     response1 : storyContentArray[8],
     response2 : '',
-    background : '',
+    background : urlArrTest[13],
      
      
     tagName: 'div',
@@ -324,7 +326,7 @@ const page15 = {
     choice2 : 'A',
     response1 : '',
     response2 : storyContentArray[9],
-    background : '',
+    background : urlArrTest[14],
      
      
     tagName: 'div',
@@ -337,7 +339,7 @@ const page16 = {
     choice2 : 'A',
     response1 : '',
     response2 : '',
-    background : '',
+    background : urlArrTest[15],
      
      
     tagName: 'div',
@@ -350,7 +352,7 @@ const page17 = {
     choice2 : dialogue[17],
     response1 : storyContentArray[10],
     response2 : storyContentArray[10],
-    background : '',
+    background : urlArrTest[16],
      
      
     tagName: 'div',
@@ -363,7 +365,7 @@ const page18 = {
     choice2 : 'A',
     response1 : dialogue[18],
     response2 : dialogue[18],
-    background : '',
+    background : urlArrTest[17],
      
      
     tagName: 'div',
@@ -376,7 +378,7 @@ const page19 = {
     choice2 : 'A',
     response1 : dialogue[16],
     response2 : '',
-    background : '',
+    background : urlArrTest[18],
      
      
     tagName: 'div',
@@ -389,7 +391,7 @@ const page20 = {
     choice2 : 'A',
     response1 : storyContentArray[11],
     response2 : storyContentArray[11],
-    background : '',
+    background : urlArrTest[19],
      
      
     tagName: 'div',
@@ -402,7 +404,7 @@ const page21 = {
     choice2 : dialogue[22],
     response1 : storyContentArray[12],
     response2 : '',
-    background : '',
+    background : urlArrTest[20],
      
      
     tagName: 'div',
@@ -415,7 +417,7 @@ const page22 = {
     choice2 : 'A',
     response1 : '',
     response2 : '',
-    background : '',
+    background : urlArrTest[21],
      
      
     tagName: 'div',
@@ -428,7 +430,7 @@ const page23 = {
     choice2 : 'A',
     response1 : '',
     response2 : '',
-    background : '',
+    background : urlArrTest[22],
      
      
     tagName: 'div',
@@ -441,7 +443,7 @@ const page24 = {
     choice2 : 'A',
     response1 : '',
     response2 : '',
-    background : '',
+    background : urlArrTest[23],
      
      
     tagName: 'div',
@@ -450,11 +452,11 @@ const page24 = {
 
 const page25 = {
      
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : '',
+    choice1 : dialogue[26],
+    choice2 : dialogue[27],
+    response1 : storyContentArray[13],
+    response2 : storyContentArray[13],
+    background : urlArrTest[24],
      
      
     tagName: 'div',
@@ -463,12 +465,12 @@ const page25 = {
 
 const page26 = {
      
-    choice1 : dialogue[26],
-    choice2 : dialogue[27],
-    response1 : storyContentArray[13],
-    response2 : storyContentArray[13],
+    choice1 : 'Continue',
+    choice2 : 'A',
+    response1 : '',
+    response2 : '',
     response3: dialogue[28],
-    background : '',
+    background : urlArrTest[25],
      
      
     tagName: 'div',
@@ -477,11 +479,11 @@ const page26 = {
 
 const page27 = {
      
-    choice1 : dialogue[22],
-    choice2 : 'A',
+    choice1 : 'Continue on the trail',
+    choice2 : 'Head back to the gate',
     response1 : storyContentArray[14],
-    response2 : storyContentArray[14],
-    background : '',
+    response2 : '',
+    background : urlArrTest[25],
      
      
     tagName: 'div',
@@ -494,7 +496,7 @@ const page28 = {
     choice2 : dialogue[31],
     response1 : storyContentArray[15],
     response2 : storyContentArray[15],
-    background : '',
+    background : urlArrTest[10],
      
      
     tagName: 'div',
@@ -507,7 +509,7 @@ const page29 = {
     choice2 : dialogue[34],
     response1 : storyContentArray[17],
     response2 : storyContentArray[17],
-    background : '',
+    background : urlArrTest[28],
      
      
     tagName: 'div',
@@ -520,7 +522,7 @@ const page30 = {
     choice2 : dialogue[36],
     response1 : storyContentArray[18],
     response2 : storyContentArray[18],
-    background : '',
+    background : urlArrTest[30],
      
      
     tagName: 'div',
@@ -533,7 +535,7 @@ const page31 = {
     choice2 : dialogue[38],
     response1 : storyContentArray[19],
     response2 : storyContentArray[19],
-    background : '',
+    background : urlArrTest[31],
      
      
     tagName: 'div',
@@ -546,7 +548,7 @@ const page32 = {
     choice2 : dialogue[36],
     response1 : storyContentArray[20],
     response2 : storyContentArray[20],
-    background : '',
+    background : urlArrTest[30],
      
      
     tagName: 'div',
@@ -559,7 +561,7 @@ const page33 = {
     choice2 : dialogue[36],
     response1 : storyContentArray[21],
     response2 : storyContentArray[21],
-    background : '',
+    background : urlArrTest[31],
      
      
     tagName: 'div',
@@ -572,7 +574,7 @@ const page34 = {
     choice2 : 'A',
     response1 : storyContentArray[22],
     response2 : storyContentArray[22],
-    background : '',
+    background : urlArrTest[32],
      
      
     tagName: 'div',
@@ -585,16 +587,27 @@ const page35 = {
     choice2 : dialogue[41],
     response1 : storyContentArray[23],
     response2 : storyContentArray[23],
-    background : '',
+    background : urlArrTest[13],
      
      
     tagName: 'div',
     id: 'page35'
 } //loop on option 2
-
 const page36 = {
      
-    choice1 : 'A',
+    choice1 : 'Continue',
+    choice2 : 'A',
+    response1 : 'You place the items in the boat',
+    response2 : '',
+    background : urlArrTest[29],
+     
+     
+    tagName: 'div',
+    id: 'page36'
+}
+const page37 = {
+     
+    choice1 : 'FIN',
     choice2 : 'A',
     response1 : storyContentArray[24],
     response2 : storyContentArray[24],
@@ -602,7 +615,19 @@ const page36 = {
      
      
     tagName: 'div',
-    id: 'page36'
+    id: 'page37'
+}
+const page38 = {
+     
+    choice1 : 'A',
+    choice2 : 'A',
+    response1 : storyContentArray[25],
+    response2 : '',
+    background : urlArrTest[33],
+     
+     
+    tagName: 'div',
+    id: 'page37'
 }
 
 
@@ -610,5 +635,5 @@ const page36 = {
 
 
 let pageArr = []
-pageArr.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13, page14, page15, page16, page17, page18, page19, page20, page21, page22, page23, page24, page25, page26, page27, page28, page29, page30, page31, page32, page33, page34, page35, page36) 
+pageArr.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13, page14, page15, page16, page17, page18, page19, page20, page21, page22, page23, page24, page25, page26, page27, page28, page29, page30, page31, page32, page33, page34, page35, page36, page37, page38) 
 

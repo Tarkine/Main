@@ -29,7 +29,8 @@ let btnTwo = document.getElementById('buttonTwo');
 let items = [
     "fuse",
     "Steering Wheel",
-    "keys"
+    "keys",
+    "stone"
 ]
 
 // CONSTRUCTOR
@@ -80,12 +81,14 @@ setItemInventory();
 
 function renderInventoryElements() {
     //whenever you update inventory update the elements in inventory
-    let string = ''
     for (let i = 0; i < inventory.length; i++) {
-        string += `<div>${inventory[i]}</div>`
+        let newItem = document.createElement('p')
+        let invDiv = document.getElementsByClassName('inventory')
+        invDiv[0].appendChild(newItem)
+        newItem.innerHTML = inventory[i]
     }
     //console.log(document.getElementsByClassName('inventory'))
-    document.getElementsByClassName('inventory')[0].innerHTML = string
+
 }
 
 function inventoryDisplay() {
@@ -96,27 +99,27 @@ renderInventoryElements()
 
 
 
-function addToInventory(event) {
-    var id = event.target.id
-    inventory.push(id);
-    console.log(inventory)
-    renderInventoryElements()
-    setItemInventory();
-}
+// function addToInventory(event) {
+//     var id = event.target.id
+//     inventory.push(id);
+//     console.log(inventory)
+//     renderInventoryElements()
+//     setItemInventory();
+// }
 
 
 function addFirstPage (){
     // Loads first page automatically
     let firstPage = document.createElement(pageArr[0].tagName);
     firstPage.id = pageArr[0].id;
-    let childOfNewNode = document.createElement('p')
+    let childOfNewNode = document.createElement('p');
     img.src = urlArrTest[0];
-    childOfNewNode.innerText = storyContentArray[0]
-    typingEffect(childOfNewNode, 30)
-    element.appendChild(firstPage)
-    firstPage.appendChild(childOfNewNode)
-    btnOne.innerHTML = dialogue[0]
-    btnTwo.innerHTML = dialogue[1]
+    childOfNewNode.innerText = storyContentArray[0];
+    typingEffect(childOfNewNode, 30);
+    element.appendChild(firstPage);
+    firstPage.appendChild(childOfNewNode);
+    btnOne.innerHTML = dialogue[0];
+    btnTwo.innerHTML = dialogue[1];
 }
 addFirstPage()
 
@@ -128,21 +131,22 @@ function bttnOne () {
     btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
     skip1()
-    i++
+    i++;
     bg.remove();
-    let newNode = document.createElement(pageArr[i].tagName)
-    img.src = urlArrTest[i];
-    let childOfNewNode = document.createElement('p')
-    childOfNewNode.innerText = pageArr[i].response1
-    typingEffect(childOfNewNode, 30)
-    newNode.id = pageArr[i].id
-    element.appendChild(newNode)
-    newNode.appendChild(childOfNewNode)
-    nextPage()
-    choice1()
-    choice2()
-    doubleResponse ();
-    console.log(i)
+    let newNode = document.createElement(pageArr[i].tagName);
+    img.src = pageArr[i].background;
+    let childOfNewNode = document.createElement('p');
+    childOfNewNode.innerText = pageArr[i].response1;
+    typingEffect(childOfNewNode, 30);
+    newNode.id = pageArr[i].id;
+    element.appendChild(newNode);
+    newNode.appendChild(childOfNewNode);
+    nextPage();
+    choice1();
+    choice2();
+    doubleResponse();
+    end();
+    addItem();
 }
 
 btnTwo.addEventListener('click', bttnTwo);
@@ -154,7 +158,7 @@ function bttnTwo () {
     rePrompt();
     bg.remove();
     let newNode = document.createElement(pageArr[i].tagName);
-    img.src = urlArrTest[i];
+    img.src = pageArr[i].background;
     let childOfNewNode = document.createElement('p');
     childOfNewNode.innerText = pageArr[i].response2;
     typingEffect(childOfNewNode, 30);
@@ -178,15 +182,47 @@ function doubleResponse () {
 // Need to know which sections to skip or re-prompt
 
 // Work on 9/4/22, loops
+function addItem () {
+    if (i === 6) {
+        inventory.push(items[3]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 13 || i === 20) {
+        inventory.push(items[0]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 28) {
+        inventory.push(items[1]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 33) {
+        inventory.push(items[2]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 36) {
+        localStorage.clear();
+    }
+}
 function skip1() {
-    if (i === 22 || i === 1 || i === 14 || i === 19 || i === 6 || i === 17 || i === 18) {
+    console.log(i)
+    if (i === 22 || i === 1 || i === 19 || i === 6 || i === 18) {
         i++ + 1
         
     }
-    
+    if (pageArr[i] === page14) {
+        i++ + 3
+    }
+    if (pageArr[i] === page17) {
+        i++ + 2
+    }
 }
+
 function rePrompt () {
-    if (i === 3 || i === 7) {
+    if (i === 3 || i === 7 || i === 28 || i === 35 ) {
         i-- 
     }
 
@@ -201,12 +237,21 @@ function choice2 () {
         btnTwo.style.display = 'none';
     }
 }
+function end () {
+    if (i === 37) {
+        img.style.width = '25%';
+        let inv = document.getElementById('inventory')
+        inv.remove()
+    }
+    
+    
+}
 // save username input
 
 function openForm() {
     document.getElementById("userNameForm").style.display = "block";
     document.getElementById("popupForm").style.display = "block";
-  }
+}
 
 function submitAndCloseForm() {
     document.getElementById("userNameForm").style.display = "none";
@@ -218,6 +263,10 @@ function submitAndCloseForm() {
 // load username input into div
 
 document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username");
+
+
+// TODO: ADD AS CONDITION FOR THE FIN PAGE
+
 
 // Inventory Validation
 function inventoryValidation () {
@@ -248,6 +297,7 @@ function nextPage () {
 }
 
 function resetAndReplay () {
+    window.location.reload()
     localStorage.clear();
 }
 function backToHome (){

@@ -127,10 +127,14 @@ addFirstPage()
 
 btnOne.addEventListener('click', bttnOne);
 function bttnOne () {
+    
     btnOne.style.display = 'block';
     btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
-    skip1()
+    if (pageArr[i] === page35) {
+    inventoryValidation();
+    }
+    skip1();
     i++;
     bg.remove();
     let newNode = document.createElement(pageArr[i].tagName);
@@ -147,13 +151,19 @@ function bttnOne () {
     doubleResponse();
     end();
     addItem();
+    removeItemOne();
+    
 }
+    
+
 
 btnTwo.addEventListener('click', bttnTwo);
 function bttnTwo () {
+    
     btnOne.style.display = 'block';
     btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
+    skip2();
     i++;
     rePrompt();
     bg.remove();
@@ -169,6 +179,7 @@ function bttnTwo () {
     choice1();
     choice2();
     doubleResponse();
+    removeItemTwo();
 }
 function doubleResponse () {
     if (pageArr[i].hasOwnProperty('response3')) {
@@ -181,7 +192,6 @@ function doubleResponse () {
 }
 // Need to know which sections to skip or re-prompt
 
-// Work on 9/4/22, loops
 function addItem () {
     if (i === 6) {
         inventory.push(items[3]);
@@ -208,10 +218,8 @@ function addItem () {
     }
 }
 function skip1() {
-    console.log(i)
     if (i === 22 || i === 1 || i === 19 || i === 6 || i === 18) {
         i++ + 1
-        
     }
     if (pageArr[i] === page14) {
         i++ + 3
@@ -220,9 +228,13 @@ function skip1() {
         i++ + 2
     }
 }
-
+function skip2 () {
+    if (i === 17) {
+        i++ + 1
+    }
+}
 function rePrompt () {
-    if (i === 3 || i === 7 || i === 28 || i === 35 ) {
+    if (i === 3 || i === 7 || i === 28 || i === 35) {
         i-- 
     }
 
@@ -238,13 +250,28 @@ function choice2 () {
     }
 }
 function end () {
-    if (i === 37) {
+    if (i === 38) {
         img.style.width = '25%';
         let inv = document.getElementById('inventory')
         inv.remove()
     }
     
     
+}
+function removeItemOne () {
+    if (i === 9) {
+        inventory.pop(items[3]);
+    }
+}
+function removeItemTwo () {
+    if (i === 14) {
+        inventory.pop(items[0]);
+        boatArray.push (items[0]);
+    }
+    if (i === 20) {
+        inventory.pop(items[0]);
+        boatArray.push (items[0]);
+    }
 }
 // save username input
 
@@ -267,31 +294,34 @@ document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username"
 
 // TODO: ADD AS CONDITION FOR THE FIN PAGE
 
-
+function skipEnd () {
+    if (pageArr[i] === page35) {
+        i++ + 1
+    }   
+}
 // Inventory Validation
 function inventoryValidation () {
+let testInv = JSON.parse(localStorage.getItem('inventory'));
 // Compares user inventory items (array) to required boat array items
-for (let i = 0; i < inventoryLocalStorage.length; i++) {
-    let boatItems = boatArray;
-    if (inventoryLocalStorage.includes(boatItems)) {
+for (let i = 0; i < testInv.length; i++) {
+    
+    // let boatItems = inventory;
+    let winItems = winConArray;
 // If the user has all 4 items, the boat array is compared to the win condition array
-        for (let j = 0; j < boatArray.length; j++) {
-            let winItems = winConArray;
 // If the boat array is === to the win condition array, they are allowed to move to the win screen
-            if (boatArray.includes(winItems)) {
-                // render win screen
-            }
-        }
+            if (testInv.includes(winItems[i])) {
+                skipEnd()        
+            } 
+        
     }
 }
 
-};
+
 
 
 // increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
 
-function nextPage () {
-    
+function nextPage () {  
     btnOne.innerHTML = pageArr[i].choice1;
     btnTwo.innerHTML = pageArr[i].choice2;
 }

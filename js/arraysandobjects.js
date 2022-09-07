@@ -99,9 +99,11 @@ let dialogue = [
     "Just vibe."//41
 ]
 
-let winConArray = [];
+let winConArray = ['fuse', 'steeringWheel', 'keys'];
 
-let boatArray = ['fuseOne','fuseTwo', 'steeringWheel', 'keys'];
+
+
+let boatArray = [];
 
 let button1 = document.getElementById('buttonOne');
 
@@ -221,7 +223,7 @@ const page7 = {
     choice1 : dialogue[6],
     choice2 : dialogue[7],
     response1 : storyContentArray[6],
-    response2 : '',
+    response2 : storyContentArray[6],
     background : urlArrTest[6],
      
      
@@ -595,9 +597,9 @@ const page35 = {
 } //loop on option 2
 const page36 = {
      
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : 'You place the items in the boat',
+    choice1 : 'Yes',
+    choice2 : 'Just vibe',
+    response1 : 'Unfortunately, you don\'t have all the items to fix the boat. Would you like to go back?',
     response2 : '',
     background : urlArrTest[29],
      
@@ -607,6 +609,19 @@ const page36 = {
 }
 const page37 = {
      
+    choice1 : 'Continue',
+    choice2 : 'A',
+    response1 : 'You place the items in the boat',
+    response2 : '',
+    background : urlArrTest[29],
+     
+     
+    tagName: 'div',
+    id: 'page37'
+}
+
+const page38 = {
+     
     choice1 : 'FIN',
     choice2 : 'A',
     response1 : storyContentArray[24],
@@ -615,9 +630,9 @@ const page37 = {
      
      
     tagName: 'div',
-    id: 'page37'
+    id: 'page38'
 }
-const page38 = {
+const page39 = {
      
     choice1 : 'A',
     choice2 : 'A',
@@ -627,7 +642,7 @@ const page38 = {
      
      
     tagName: 'div',
-    id: 'page37'
+    id: 'page39'
 }
 
 
@@ -635,5 +650,5 @@ const page38 = {
 
 
 let pageArr = []
-pageArr.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13, page14, page15, page16, page17, page18, page19, page20, page21, page22, page23, page24, page25, page26, page27, page28, page29, page30, page31, page32, page33, page34, page35, page36, page37, page38) 
+pageArr.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13, page14, page15, page16, page17, page18, page19, page20, page21, page22, page23, page24, page25, page26, page27, page28, page29, page30, page31, page32, page33, page34, page35, page36, page37, page38, page39) 
 

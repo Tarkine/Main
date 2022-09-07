@@ -1,23 +1,36 @@
 'use strict';
 //console.logs
 // console.log(items[0])
-
-
 // GLOBAL VARIABLES
+let chromeAudio = document.getElementById('iframeAudio')
+chromeAudio.volume = 0.1;
+let notChromeAudio = document.getElementById('playAudio')
+notChromeAudio.volume = 0.1;
+let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+if (!isChrome){
+    chromeAudio.remove()
+}
+else {
+    notChromeAudio.remove()
+}
+let back = document.getElementById('back')
 const p = document.getElementById('buttonOne');
 let inventory = (JSON.parse(localStorage.getItem('inventory')) ? JSON.parse(localStorage.getItem('inventory')) : []); //ternary "?" if the condition (first) is true then action (second) position ":" same as else (set inventory)so that on refresh it wont reset array
 let element = document.getElementById('gameWindow')
+let img = document.getElementById('asset')
 let child  = element.children;
-let totalPage = 35;
+let resetButton = document.getElementById("resetButton");
 let currentPage = 0;
 let i = 0;
+// let response3 = pageArr[i].response3
 let body = document.querySelector('body')
 let btnOne = document.getElementById('buttonOne');
 let btnTwo = document.getElementById('buttonTwo');
 let items = [
     "fuse",
     "Steering Wheel",
-    "keys"
+    "keys",
+    "stone"
 ]
 
 // CONSTRUCTOR
@@ -26,10 +39,9 @@ let items = [
 // CONSTRUCTOR METHODS
 
 // EVENT LISTENERS
-
+resetButton.addEventListener('click', resetAndReplay);
 // event listener for each button, change to no display to hid button
-button1.addEventListener('click', nextPage) 
-button2.addEventListener('click', nextPage) 
+
 
 // FUNCTIONS
 // This function takes two arguments, the element that it is modifying, and the speed that it modifies it.
@@ -69,12 +81,14 @@ setItemInventory();
 
 function renderInventoryElements() {
     //whenever you update inventory update the elements in inventory
-    let string = ''
     for (let i = 0; i < inventory.length; i++) {
-        string += `<div>${inventory[i]}</div>`
+        let newItem = document.createElement('p')
+        let invDiv = document.getElementsByClassName('inventory')
+        invDiv[0].appendChild(newItem)
+        newItem.innerHTML = inventory[i]
     }
     //console.log(document.getElementsByClassName('inventory'))
-    document.getElementsByClassName('inventory')[0].innerHTML = string
+
 }
 
 function inventoryDisplay() {
@@ -85,24 +99,27 @@ renderInventoryElements()
 
 
 
-function addToInventory(event) {
-    var id = event.target.id
-    inventory.push(id);
-    console.log(inventory)
-    renderInventoryElements()
-    setItemInventory();
-}
+// function addToInventory(event) {
+//     var id = event.target.id
+//     inventory.push(id);
+//     console.log(inventory)
+//     renderInventoryElements()
+//     setItemInventory();
+// }
 
 
 function addFirstPage (){
     // Loads first page automatically
     let firstPage = document.createElement(pageArr[0].tagName);
     firstPage.id = pageArr[0].id;
-    let childOfNewNode = document.createElement('p')
-    childOfNewNode.innerText = pageArr[0].response1 //placeholder
-    typingEffect(childOfNewNode, 50)
-    element.appendChild(firstPage)
-    firstPage.appendChild(childOfNewNode) 
+    let childOfNewNode = document.createElement('p');
+    img.src = urlArrTest[0];
+    childOfNewNode.innerText = storyContentArray[0];
+    typingEffect(childOfNewNode, 30);
+    element.appendChild(firstPage);
+    firstPage.appendChild(childOfNewNode);
+    btnOne.innerHTML = dialogue[0];
+    btnTwo.innerHTML = dialogue[1];
 }
 addFirstPage()
 
@@ -110,40 +127,158 @@ addFirstPage()
 
 btnOne.addEventListener('click', bttnOne);
 function bttnOne () {
+    
+    btnOne.style.display = 'block';
+    btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
-    i++
+    if (pageArr[i] === page35) {
+    inventoryValidation();
+    }
+    skip1();
+    i++;
     bg.remove();
-    let newNode = document.createElement(pageArr[i].tagName)
-    body.style.backgroundImage = urlArrTest[i-1];
-    let childOfNewNode = document.createElement('p')
-    childOfNewNode.innerText = pageArr[i].response1
-    typingEffect(childOfNewNode, 50)
-    newNode.id = pageArr[i].id
-    element.appendChild(newNode)
-    newNode.appendChild(childOfNewNode) 
+    let newNode = document.createElement(pageArr[i].tagName);
+    img.src = pageArr[i].background;
+    let childOfNewNode = document.createElement('p');
+    childOfNewNode.innerText = pageArr[i].response1;
+    typingEffect(childOfNewNode, 30);
+    newNode.id = pageArr[i].id;
+    element.appendChild(newNode);
+    newNode.appendChild(childOfNewNode);
+    nextPage();
+    choice1();
+    choice2();
+    doubleResponse();
+    end();
+    addItem();
+    removeItemOne();
+    
 }
+    
+
+
 btnTwo.addEventListener('click', bttnTwo);
 function bttnTwo () {
+    
+    btnOne.style.display = 'block';
+    btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
-    i++
+    skip2();
+    i++;
+    rePrompt();
     bg.remove();
-    let newNode = document.createElement(pageArr[i].tagName)
-    body.style.backgroundImage = urlArrTest[i-1];
-    let childOfNewNode = document.createElement('p')
-    childOfNewNode.innerText = pageArr[i].response2
-    typingEffect(childOfNewNode, 50)
-    newNode.id = pageArr[i].id
-    element.appendChild(newNode)
-    newNode.appendChild(childOfNewNode) 
+    let newNode = document.createElement(pageArr[i].tagName);
+    img.src = pageArr[i].background;
+    let childOfNewNode = document.createElement('p');
+    childOfNewNode.innerText = pageArr[i].response2;
+    typingEffect(childOfNewNode, 30);
+    newNode.id = pageArr[i].id;
+    element.appendChild(newNode);
+    newNode.appendChild(childOfNewNode);
+    nextPage();
+    choice1();
+    choice2();
+    doubleResponse();
+    removeItemTwo();
 }
+function doubleResponse () {
+    if (pageArr[i].hasOwnProperty('response3')) {
+        let node = document.getElementById(pageArr[i].id);
+        let secondChild = document.createElement('p');
+        secondChild.innerText = pageArr[i].response3;
+        typingEffect(secondChild, 50)
+        node.appendChild(secondChild);
+    }
+}
+// Need to know which sections to skip or re-prompt
 
+function addItem () {
+    if (i === 6) {
+        inventory.push(items[3]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 13 || i === 20) {
+        inventory.push(items[0]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 28) {
+        inventory.push(items[1]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 33) {
+        inventory.push(items[2]);
+        renderInventoryElements();
+        setItemInventory();
+    }
+    if (i === 36) {
+        localStorage.clear();
+    }
+}
+function skip1() {
+    if (i === 22 || i === 1 || i === 19 || i === 6 || i === 18) {
+        i++ + 1
+    }
+    if (pageArr[i] === page14) {
+        i++ + 3
+    }
+    if (pageArr[i] === page17) {
+        i++ + 2
+    }
+}
+function skip2 () {
+    if (i === 17) {
+        i++ + 1
+    }
+}
+function rePrompt () {
+    if (i === 3 || i === 7 || i === 28 || i === 35) {
+        i-- 
+    }
 
+}
+function choice1 () {
+    if (btnOne.innerHTML==='A') {
+        btnOne.style.display = 'none';
+    } 
+}
+function choice2 () {
+    if (btnTwo.innerHTML==='A') {
+        btnTwo.style.display = 'none';
+    }
+}
+function end () {
+    if (i === 38) {
+        img.style.width = '25%';
+        let inv = document.getElementById('inventory')
+        inv.remove()
+    }
+    
+    
+}
+function removeItemOne () {
+    if (i === 9) {
+        inventory.pop(items[3]);
+    }
+}
+function removeItemTwo () {
+    if (i === 14) {
+        inventory.pop(items[0]);
+        boatArray.push (items[0]);
+    }
+    if (i === 20) {
+        inventory.pop(items[0]);
+        boatArray.push (items[0]);
+    }
+}
 // save username input
 
 function openForm() {
     document.getElementById("userNameForm").style.display = "block";
     document.getElementById("popupForm").style.display = "block";
-  }
+}
 
 function submitAndCloseForm() {
     document.getElementById("userNameForm").style.display = "none";
@@ -156,51 +291,48 @@ function submitAndCloseForm() {
 
 document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username");
 
+
+// TODO: ADD AS CONDITION FOR THE FIN PAGE
+
+function skipEnd () {
+    if (pageArr[i] === page35) {
+        i++ + 1
+    }   
+}
 // Inventory Validation
 function inventoryValidation () {
+let testInv = JSON.parse(localStorage.getItem('inventory'));
 // Compares user inventory items (array) to required boat array items
-for (let i = 0; i < inventoryLocalStorage.length; i++) {
-    let boatItems = boatArray;
-    if (inventoryLocalStorage.includes(boatItems)) {
+for (let i = 0; i < testInv.length; i++) {
+    
+    // let boatItems = inventory;
+    let winItems = winConArray;
 // If the user has all 4 items, the boat array is compared to the win condition array
-        for (let j = 0; j < boatArray.length; j++) {
-            let winItems = winConArray;
 // If the boat array is === to the win condition array, they are allowed to move to the win screen
-            if (boatArray.includes(winItems)) {
-                // render win screen
-            }
-        }
+            if (testInv.includes(winItems[i])) {
+                skipEnd()        
+            } 
+        
     }
 }
 
-};
-function hideButton1 () {
-    // add a conditional that only hides when screen changes to environment
 
-    button1.style.display = 'none';
-};
-
-function hideButton2 () {
-    // add a conditional that only hides when screen changes to environment
-
-    button2.style.display = 'none';
-};
 
 
 // increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
 
-function nextPage (event) {
-    currentPage += 1;
-    if (currentPage === pageArr.length) {
-        hideButton1();
-        hideButton2();
-        return;
-    }
-    button1.innerHTML = pageArr[currentPage].choice1;
-    button2.innerHTML = pageArr[currentPage].choice2;
+function nextPage () {  
+    btnOne.innerHTML = pageArr[i].choice1;
+    btnTwo.innerHTML = pageArr[i].choice2;
 }
 
-
-
+function resetAndReplay () {
+    window.location.reload()
+    localStorage.clear();
+}
+function backToHome (){
+    window.location.href='index.html';
+}
+back.addEventListener('click', backToHome)
 // EVENT HANDLERS
 

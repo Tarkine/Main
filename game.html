@@ -12,48 +12,48 @@
     <title>Tarkine</title>
 </head>
 <body>
+    <iframe src="assets/audio.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+    </iframe>
+    <audio autoplay loop  id="playAudio">
+        <source src="assets/audio.mp3">
+    </audio>
     <header>
-        <button class="openButton" onclick="openForm()"><strong>Open Form</strong></button>
+        <button id="back"><strong>Back home</strong></button>
+        <button id="resetButton" onclick="resetAndReplay()"><strong>Reset</strong></button>
+        <button class="openButton" onclick="openForm()"><strong>Name</strong></button>
         <div>
             <h1 id="userNameDiv"></h1>
         </div>
         <div id="popupForm">
             <form class="formContainer" id="userNameForm">
-            <fieldset>
-            <legend>Username</legend>
-                <label>
-                    Enter your name!
-                    <input type="text" id="nameTextBox" placeholder="Type something" required/>
-                </label>
-            </fieldset>
+                <fieldset>
+                    <legend>Username</legend>
+                        <label>
+                            Enter your name!
+                            <input type="text" id="nameTextBox" placeholder="Type something" required/>
+                        </label>
+                </fieldset>
                 <label>
                     <input type="submit" onclick="submitAndCloseForm();"> 
                 </label>
            </form>
-        </div> 
+        </div>
     </header>
     <main>
-        
-        
         <section id="gameWindow">
-
-        </section>
-         
             
-        
+            <img id="asset" src="" alt="">
+        </section>
+        <button id="buttonOne"></button>
+        <button id="buttonTwo"></button>
+        <button id="inventory" type="Inventory" onclick="inventoryDisplay()">Inventory</button>
     </main>
     <footer>
-        <button id="buttonOne">Option 1</button>
-        <button id="buttonTwo">Option 2</button>
         <div class = 'hidden inventory'>
-    
+            
         </div>
-        
-        
-        <button type="Inventory" onclick="inventoryDisplay()">Inventory</button>
-        <button id="wheel" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
-        <button id="Key" type ="item" onclick="addToInventory(event)">TestInventoryItem</button> 
-        <canvas id="inventorySpace"></canvas>
+        <!-- <button id="wheel" type ="item" onclick="addToInventory(event)">TestInventoryItem</button>  -->
+        <!-- <button id="Key" type ="item" onclick="addToInventory(event)">TestInventoryItem</button>  -->
     </footer>
 </body>
 </html>

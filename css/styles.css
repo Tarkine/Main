@@ -117,13 +117,16 @@ body {
     text-align: center;
     color: #ebebeb;
 }
+#wrapper {
+    display: block;
+    max-width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
 #type {
     font-family: 'Bebas Neue', cursive;
     font-size: 20px;
-    color: #ebebeb;
-    white-space: nowrap;
-    margin: 0 auto;
-    text-align: center;
+    color: #ebebeb; 
 }
 #team {
     margin-bottom: 3rem;

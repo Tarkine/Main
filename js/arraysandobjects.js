@@ -201,8 +201,6 @@ const page37 = new Page('Continue', 'A', 'You place the items in the boat', '', 
 const page38 = new Page('FIN','A', storyContentArray[24], storyContentArray[24], '', '', 'div', 'page38');
 const page39 = new Page('A', 'A', storyContentArray[25], '', '', urlArrTest[33], 'div', 'page39');
 
-
-
 let pageArr = []
 pageArr.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13, page14, page15, page16, page17, page18, page19, page20, page21, page22, page23, page24, page25, page26, page27, page28, page29, page30, page31, page32, page33, page34, page35, page36, page37, page38, page39) 
 

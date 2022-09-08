@@ -150,516 +150,56 @@ let urlArrTest = ['assets/page1.png',
 let trackedTextIndex2 = 1;
 // need to fill out dialog choices and assets, can get rid of assets array and set links to background property
 
-// function Page (choice1, choice2, response1, response2, response3, background, tagName, id) {
-//     this.choice1 = choice1;
-//     this.choice2 = choice2;
-//     this.response1 = response1;
-//     this.response2 = response2;
-//     this.response3 = response3;
-//     this.background = background;
-//     this.tagName = tagName;
-//     this.id = id;
-// }
-
-// const page1 = new Page(dialogue[0], dialogue[1], storyContentArray[1],'' ,storyContentArray[2], urlArrTest[0], 'div', 'page1')
-
-const page1 = { 
-    choice1 : dialogue[0],
-    choice2 : dialogue[1],
-    response1 : storyContentArray[1],
-    response2 : storyContentArray[2],
-    background : urlArrTest[0],
-    tagName: 'div',
-    id: 'page1'
-}
-const page2 = {
-     
-    choice1 : dialogue[2],
-    choice2 : dialogue[3],
-    response1 : storyContentArray[1],
-    response2 : storyContentArray[2],
-    response3 : storyContentArray[3],
-    background : urlArrTest[1],
-    tagName: 'div',
-    id: 'page2'
+function Page (choice1, choice2, response1, response2, response3, background, tagName, id) {
+    this.choice1 = choice1;
+    this.choice2 = choice2;
+    this.response1 = response1;
+    this.response2 = response2;
+    this.response3 = response3;
+    this.background = background;
+    this.tagName = tagName;
+    this.id = id;
 }
 
-const page3 = {
-     
-    choice1 : dialogue[2],
-    choice2 : dialogue[3],
-    response1 : storyContentArray[3],
-    response2 : storyContentArray[4],
-    background : urlArrTest[2],
-    tagName: 'div',
-    id: 'page3'
-    
-}
-
-const page4 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[3],
-    tagName: 'div',
-    id: 'page4'
-}
-
-const page5 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[4],
-     
-     
-    tagName: 'div',
-    id: 'page5'
-}
-
-const page6 = {
-     
-    choice1 : dialogue[4],
-    choice2 : dialogue[5],
-    response1 : storyContentArray[5],
-    response2 : '',
-    response3: '',
-    background : urlArrTest[5],
-    tagName: 'div',
-    id: 'page6'
-}
-
-const page7 = {
-     
-    choice1 : dialogue[6],
-    choice2 : dialogue[7],
-    response1 : storyContentArray[6],
-    response2 : storyContentArray[6],
-    background : urlArrTest[6],
-     
-     
-    tagName: 'div',
-    id: 'page7'
-}
-
-const page8 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : dialogue[8],
-    response2 : dialogue[8],
-    background : urlArrTest[7],
-    tagName: 'div',
-    id: 'page8'
-}
-
-const page9 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[8],
-     
-     
-    tagName: 'div',
-    id: 'page9'
-}
-// ca
-
-const page10 = {
-     
-    choice1 : dialogue[9],
-    choice2 : 'A',
-    response1 : storyContentArray[7],
-    response2 : storyContentArray[7],
-    background : urlArrTest[9],
-     
-     
-    tagName: 'div',
-    id: 'page10'
-}
-
-const page11 = {
-     
-    choice1 : dialogue[10],
-    choice2 : 'A',
-    response1 : 'The Gate groans open, revealing the trail behind it.',
-    response2 : '',
-    response3 : '',
-    background : urlArrTest[10],
-     
-     
-    tagName: 'div',
-    id: 'page11'
-}
-
-const page12 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : dialogue[11],
-    response2 : '',
-    background : urlArrTest[11],
-     
-     
-    tagName: 'div',
-    id: 'page12'
-}
-
-const page13 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[12],
-     
-     
-    tagName: 'div',
-    id: 'page13'
-}
-
-const page14 = {
-     
-    choice1 : dialogue[12],
-    choice2 : dialogue[13],
-    response1 : storyContentArray[8],
-    response2 : '',
-    background : urlArrTest[13],
-     
-     
-    tagName: 'div',
-    id: 'page14'
-}
-
-const page15 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : storyContentArray[9],
-    background : urlArrTest[14],
-     
-     
-    tagName: 'div',
-    id: 'page15'
-}
-
-const page16 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[15],
-     
-     
-    tagName: 'div',
-    id: 'page16'
-}
-
-const page17 = {
-     
-    choice1 : dialogue[15],
-    choice2 : dialogue[17],
-    response1 : storyContentArray[10],
-    response2 : storyContentArray[10],
-    background : urlArrTest[16],
-     
-     
-    tagName: 'div',
-    id: 'page17'
-} //skip choice on dialogue 1 to page 19
-
-const page18 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : dialogue[18],
-    response2 : dialogue[18],
-    background : urlArrTest[17],
-     
-     
-    tagName: 'div',
-    id: 'page18'
-}//continuance for dialogue 2, response 1 should skip 19
-
-const page19 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : dialogue[16],
-    response2 : '',
-    background : urlArrTest[18],
-     
-     
-    tagName: 'div',
-    id: 'page19'
-}
-
-const page20 = {
-     
-    choice1 : dialogue[19],
-    choice2 : 'A',
-    response1 : storyContentArray[11],
-    response2 : storyContentArray[11],
-    background : urlArrTest[19],
-     
-     
-    tagName: 'div',
-    id: 'page20'
-}
-
-const page21 = {
-     
-    choice1 : dialogue[23],
-    choice2 : dialogue[22],
-    response1 : storyContentArray[12],
-    response2 : '',
-    background : urlArrTest[20],
-     
-     
-    tagName: 'div',
-    id: 'page21'
-} //fork, choosing choice 1 should take you to 23, choice 2 should take you to 22.
-
-const page22 = {
-     
-    choice1 : dialogue[24],
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[21],
-     
-     
-    tagName: 'div',
-    id: 'page22'
-}
-
-const page23 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[22],
-     
-     
-    tagName: 'div',
-    id: 'page23'
-}
-
-const page24 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    background : urlArrTest[23],
-     
-     
-    tagName: 'div',
-    id: 'page24'
-}
-
-const page25 = {
-     
-    choice1 : dialogue[26],
-    choice2 : dialogue[27],
-    response1 : storyContentArray[13],
-    response2 : storyContentArray[13],
-    background : urlArrTest[24],
-     
-     
-    tagName: 'div',
-    id: 'page25'
-}
-
-const page26 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : '',
-    response2 : '',
-    response3: dialogue[28],
-    background : urlArrTest[25],
-     
-     
-    tagName: 'div',
-    id: 'page26'
-} //this one required the third option load with the ethan quip
-
-const page27 = {
-     
-    choice1 : 'Continue on the trail',
-    choice2 : 'Head back to the gate',
-    response1 : storyContentArray[14],
-    response2 : '',
-    background : urlArrTest[25],
-     
-     
-    tagName: 'div',
-    id: 'page27'
-}
-
-const page28 = {
-     
-    choice1 : dialogue[30],
-    choice2 : dialogue[31],
-    response1 : storyContentArray[15],
-    response2 : storyContentArray[15],
-    background : urlArrTest[10],
-     
-     
-    tagName: 'div',
-    id: 'page28'
-} // dialogue 2 choice will need a repeat
-
-const page29 = {
-     
-    choice1 : 'Continue',
-    choice2 : dialogue[34],
-    response1 : storyContentArray[17],
-    response2 : storyContentArray[17],
-    background : urlArrTest[28],
-     
-     
-    tagName: 'div',
-    id: 'page29'
-}
-
-const page30 = {
-     
-    choice1 : dialogue[35],
-    choice2 : dialogue[36],
-    response1 : storyContentArray[18],
-    response2 : storyContentArray[18],
-    background : urlArrTest[30],
-     
-     
-    tagName: 'div',
-    id: 'page30'
-}
-
-const page31 = {
-     
-    choice1 : dialogue[37],
-    choice2 : dialogue[38],
-    response1 : storyContentArray[19],
-    response2 : storyContentArray[19],
-    background : urlArrTest[31],
-     
-     
-    tagName: 'div',
-    id: 'page31'
-}
-
-const page32 = {
-     
-    choice1 : dialogue[35],
-    choice2 : dialogue[36],
-    response1 : storyContentArray[20],
-    response2 : storyContentArray[20],
-    background : urlArrTest[30],
-     
-     
-    tagName: 'div',
-    id: 'page32'
-}
-
-const page33 = {
-     
-    choice1 : dialogue[35],
-    choice2 : dialogue[36],
-    response1 : storyContentArray[21],
-    response2 : storyContentArray[21],
-    background : urlArrTest[31],
-     
-     
-    tagName: 'div',
-    id: 'page33'
-}
-
-const page34 = {
-     
-    choice1 : dialogue[39],
-    choice2 : 'A',
-    response1 : storyContentArray[22],
-    response2 : storyContentArray[22],
-    background : urlArrTest[32],
-     
-     
-    tagName: 'div',
-    id: 'page34'
-}
-
-const page35 = {
-     
-    choice1 : dialogue[40],
-    choice2 : dialogue[41],
-    response1 : storyContentArray[23],
-    response2 : storyContentArray[23],
-    background : urlArrTest[13],
-     
-     
-    tagName: 'div',
-    id: 'page35'
-} //loop on option 2
-const page36 = {
-     
-    choice1 : 'Yes',
-    choice2 : 'Just vibe',
-    response1 : 'Unfortunately, you don\'t have all the items to fix the boat. Would you like to go back?',
-    response2 : '',
-    background : urlArrTest[29],
-     
-     
-    tagName: 'div',
-    id: 'page36'
-}
-const page37 = {
-     
-    choice1 : 'Continue',
-    choice2 : 'A',
-    response1 : 'You place the items in the boat',
-    response2 : '',
-    background : urlArrTest[29],
-     
-     
-    tagName: 'div',
-    id: 'page37'
-}
-
-const page38 = {
-     
-    choice1 : 'FIN',
-    choice2 : 'A',
-    response1 : storyContentArray[24],
-    response2 : storyContentArray[24],
-    background : '',
-     
-     
-    tagName: 'div',
-    id: 'page38'
-}
-const page39 = {
-     
-    choice1 : 'A',
-    choice2 : 'A',
-    response1 : storyContentArray[25],
-    response2 : '',
-    background : urlArrTest[33],
-     
-     
-    tagName: 'div',
-    id: 'page39'
-}
-
-
+const page1 = new Page(dialogue[0], dialogue[1], storyContentArray[1], storyContentArray[2], '', urlArrTest[0], 'div', 'page1');
+const page2 = new Page(dialogue[2], dialogue[3], storyContentArray[1],storyContentArray[2], storyContentArray[3],urlArrTest[1], 'div', 'page2');
+const page3 = new Page(dialogue[2], dialogue[3], storyContentArray[3],storyContentArray[4], '',urlArrTest[2], 'div', 'page3');
+const page4 = new Page('Continue', 'A', '','' ,'', urlArrTest[3], 'div', 'page4');
+const page5 = new Page('Continue', 'A', '','' ,'', urlArrTest[4], 'div', 'page5');
+const page6 = new Page(dialogue[4], dialogue[5], storyContentArray[5],'','', urlArrTest[5], 'div', 'page6');
+const page7 = new Page(dialogue[6], dialogue[7], storyContentArray[6],storyContentArray[6],'' , urlArrTest[6], 'div', 'page7');
+const page8 = new Page('Continue', 'A', dialogue[8],dialogue[8] ,'', urlArrTest[7], 'div', 'page8');
+const page9 = new Page('Continue', 'A', '','' ,'', urlArrTest[8], 'div', 'page9');
+const page10 = new Page(dialogue[9], 'A', storyContentArray[7],storyContentArray[7],'', urlArrTest[9], 'div', 'page10');
+const page11 = new Page(dialogue[10],'A', 'The Gate groans, open, revelating the trail behind it.','' ,'', urlArrTest[10], 'div', 'page11');
+const page12 = new Page('Continue', 'A', dialogue[11],'' ,'', urlArrTest[11], 'div', 'page12');
+const page13 = new Page('Continue', 'A', '','' ,'', urlArrTest[12], 'div', 'page13');
+const page14 = new Page(dialogue[12], dialogue[13], storyContentArray[8],'' ,'', urlArrTest[13], 'div', 'page14');
+const page15 = new Page('Continue', 'A', '',storyContentArray[9] ,'', urlArrTest[14], 'div', 'page15');
+const page16 = new Page('Continue', 'A', '','' ,'', urlArrTest[15], 'div', 'page16');
+const page17 = new Page(dialogue[15], dialogue[17], storyContentArray[10],storyContentArray[10] ,'', urlArrTest[16], 'div', 'page17');
+const page18 = new Page('Continue', 'A', dialogue[18],dialogue[18] ,'', urlArrTest[17], 'div', 'page18');
+const page19 = new Page('Continue', 'A', dialogue[16], '', '', urlArrTest[18], 'div', 'page19');
+const page20 = new Page(dialogue[19],'A', storyContentArray[11], storyContentArray[11], '', urlArrTest[19], 'div', 'page20');
+const page21 = new Page(dialogue[23], dialogue[22], storyContentArray[12], '', '', urlArrTest[20], 'div', 'page21');
+const page22 = new Page(dialogue[24], 'A', '', '', '', urlArrTest[21], 'div', 'page22');
+const page23 = new Page('Continue', 'A', '', '', '', urlArrTest[22], 'div', 'page23');
+const page24 = new Page('Continue', 'A', '', '', '', urlArrTest[23], 'div', 'page24');
+const page25 = new Page(dialogue[26], dialogue[27], storyContentArray[13], storyContentArray[13], '', urlArrTest[24], 'div', 'page25');
+const page26 = new Page('Continue', 'A', '', '', dialogue[28], urlArrTest[28], 'div', 'page26');
+const page27 = new Page('Continue on the trail', 'Head back to the gate', storyContentArray[14], '', '', urlArrTest[25], 'div', 'page27');
+const page28 = new Page(dialogue[30], dialogue[31], storyContentArray[15], storyContentArray[15], '', urlArrTest[10], 'div', 'page28');
+const page29 = new Page('Continue', dialogue[34], storyContentArray[17], storyContentArray[17], '', urlArrTest[28], 'div', 'page29');
+const page30 = new Page(dialogue[35], dialogue[36], storyContentArray[18], storyContentArray[18], '', urlArrTest[30], 'div', 'page30');
+const page31 = new Page(dialogue[37], dialogue[28], storyContentArray[19], storyContentArray[19], '', urlArrTest[31], 'div', 'page31');
+const page32 = new Page(dialogue[35], dialogue[36], storyContentArray[20], storyContentArray[20], '', urlArrTest[30], 'div', 'page32');
+const page33 = new Page(dialogue[35], dialogue[36], storyContentArray[21], storyContentArray[21], '', urlArrTest[31], 'div', 'page33');
+const page34 = new Page(dialogue[39], 'A', storyContentArray[22], storyContentArray[22], '', urlArrTest[32], 'div', 'page34');
+const page35 = new Page(dialogue[40], dialogue[41], storyContentArray[23], storyContentArray[23], '', urlArrTest[13], 'div', 'page35');
+const page36 = new Page('Yes', 'Just vibe', 'Unfortunately, you don\'t have all the items to fix the boat. Would you like to go back?', '', '', urlArrTest[29], 'div', 'page36');
+const page37 = new Page('Continue', 'A', 'You place the items in the boat', '', '', urlArrTest[29], 'div', 'page37');
+const page38 = new Page('FIN','A', storyContentArray[24], storyContentArray[24], '', '', 'div', 'page38');
+const page39 = new Page('A', 'A', storyContentArray[25], '', '', urlArrTest[33], 'div', 'page39');
 
 
 

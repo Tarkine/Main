@@ -1,5 +1,6 @@
 
 'use strict';
+
 // This function takes two arguments, the element that it is modifying, and the speed that it modifies it.
 function typingEffect(element, speed) {
     // Gatheres element text
@@ -27,9 +28,3 @@ function startGame (){
     window.location.href='game.html';
 }
 start.addEventListener('click', startGame)
-
-
-
-
-
-

@@ -238,19 +238,26 @@ function removeItemTwo () {
         boatArray.push (items[0]);
     }
 }
+
+// Open a Form to Enter a Username
 function openForm() {
+// Retrieve divs in HTML by ID from the form element
     document.getElementById("userNameForm").style.display = "block";
     document.getElementById("popupForm").style.display = "block";
 }
+
+// Close the Form Upon Submission
 function submitAndCloseForm() {
+// Retrieve div in HTML by ID from the form element
     document.getElementById("userNameForm").style.display = "none";
+// Assign a variable to the HTML text box field, retrieved by ID
     let userNameEntered = document.getElementById("nameTextBox").value;
+// Save text that user enters in local storage
     localStorage.setItem("username", userNameEntered);
     return false;
 }
   
 // Load username input into div
-
 document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username");
 
 function skipEnd () {
@@ -260,25 +267,29 @@ function skipEnd () {
 }
 // Inventory Validation
 function inventoryValidation () {
+// Load parsed items from the inventory array
 let testInv = JSON.parse(localStorage.getItem('inventory'));
-// Compares user inventory items (array) to required boat array items
+// run through the array
 for (let i = 0; i < testInv.length; i++) {
-    
-    // let boatItems = inventory;
-    let winItems = winConArray;
-// If the user has all 4 items, the boat array is compared to the win condition array
-// If the boat array is === to the win condition array, they are allowed to move to the win screen
+// Assign a variable to the win conditions array   
+let winItems = winConArray;
+// If the user's inventory array matched what is in the win condition array, skip to the win screen
             if (testInv.includes(winItems[i])) {
                 skipEnd()        
             } 
         
     }
 }
-// increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
+
+// For the Button Transitions
+// Run through the page array's option text for each button and update change button inner HTML
 function nextPage () {  
     btnOne.innerHTML = pageArr[i].choice1;
     btnTwo.innerHTML = pageArr[i].choice2;
 }
+
+// For Reset and Replay Button
+// Clear the local storage and reload to first page so player starts game with no inventory
 function resetAndReplay () {
     window.location.reload()
     localStorage.clear();

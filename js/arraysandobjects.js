@@ -99,12 +99,12 @@ let dialogue = [
     "Just vibe."//41
 ]
 
+// Requirements for win condition
 let winConArray = ['fuse', 'steeringWheel', 'keys'];
-
-
 
 let boatArray = [];
 
+// Retrieve both HTML buttons by ID
 let button1 = document.getElementById('buttonOne');
 
 let button2 = document.getElementById('buttonTwo');

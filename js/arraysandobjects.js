@@ -149,7 +149,21 @@ let urlArrTest = ['assets/page1.png',
             ]
 let trackedTextIndex2 = 1;
 // need to fill out dialog choices and assets, can get rid of assets array and set links to background property
-const page1 = {
+
+// function Page (choice1, choice2, response1, response2, response3, background, tagName, id) {
+//     this.choice1 = choice1;
+//     this.choice2 = choice2;
+//     this.response1 = response1;
+//     this.response2 = response2;
+//     this.response3 = response3;
+//     this.background = background;
+//     this.tagName = tagName;
+//     this.id = id;
+// }
+
+// const page1 = new Page(dialogue[0], dialogue[1], storyContentArray[1],'' ,storyContentArray[2], urlArrTest[0], 'div', 'page1')
+
+const page1 = { 
     choice1 : dialogue[0],
     choice2 : dialogue[1],
     response1 : storyContentArray[1],

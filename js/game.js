@@ -6,6 +6,7 @@ let chromeAudio = document.getElementById('iframeAudio')
 chromeAudio.volume = 0.1;
 let notChromeAudio = document.getElementById('playAudio')
 notChromeAudio.volume = 0.1;
+// Defines if the user's browser is Chrome using userAgent and vendor by pulling a string from the browser, if it matches 'chrome' and 'Google Inc', it is Chrome
 let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 if (!isChrome){
     chromeAudio.remove()
@@ -18,11 +19,9 @@ const p = document.getElementById('buttonOne');
 let inventory = (JSON.parse(localStorage.getItem('inventory')) ? JSON.parse(localStorage.getItem('inventory')) : []); //ternary "?" if the condition (first) is true then action (second) position ":" same as else (set inventory)so that on refresh it wont reset array
 let element = document.getElementById('gameWindow')
 let img = document.getElementById('asset')
-let child  = element.children;
 let resetButton = document.getElementById("resetButton");
 let currentPage = 0;
 let i = 0;
-// let response3 = pageArr[i].response3
 let body = document.querySelector('body')
 let btnOne = document.getElementById('buttonOne');
 let btnTwo = document.getElementById('buttonTwo');
@@ -33,15 +32,15 @@ let items = [
     "stone"
 ]
 
-// CONSTRUCTOR
-
-
-// CONSTRUCTOR METHODS
-
 // EVENT LISTENERS
 resetButton.addEventListener('click', resetAndReplay);
-// event listener for each button, change to no display to hid button
-
+// Event listener for reset button
+btnOne.addEventListener('click', bttnOne);
+// Event listener for button one
+btnTwo.addEventListener('click', bttnTwo);
+// Event listener for button two
+back.addEventListener('click', backToHome)
+// Event listener for back button
 
 // FUNCTIONS
 // This function takes two arguments, the element that it is modifying, and the speed that it modifies it.
@@ -69,16 +68,13 @@ setItem();
 
 function returnItem() {
     let localArray = JSON.parse(localStorage.getItem('dialogue'));
-    // console.log(localArray)
-}
 
+}
 returnItem();
 function setItemInventory() {
     localStorage.setItem('inventory', JSON.stringify(inventory));
 }
-
 setItemInventory();
-
 function renderInventoryElements() {
     //whenever you update inventory update the elements in inventory
     for (let i = 0; i < inventory.length; i++) {
@@ -87,27 +83,11 @@ function renderInventoryElements() {
         invDiv[0].appendChild(newItem)
         newItem.innerHTML = inventory[i]
     }
-    //console.log(document.getElementsByClassName('inventory'))
-
 }
-
 function inventoryDisplay() {
     document.getElementsByClassName('inventory')[0].classList.toggle('hidden')
 }
-
 renderInventoryElements()
-
-
-
-// function addToInventory(event) {
-//     var id = event.target.id
-//     inventory.push(id);
-//     console.log(inventory)
-//     renderInventoryElements()
-//     setItemInventory();
-// }
-
-
 function addFirstPage (){
     // Loads first page automatically
     let firstPage = document.createElement(pageArr[0].tagName);
@@ -122,12 +102,7 @@ function addFirstPage (){
     btnTwo.innerHTML = dialogue[1];
 }
 addFirstPage()
-
-
-
-btnOne.addEventListener('click', bttnOne);
 function bttnOne () {
-    
     btnOne.style.display = 'block';
     btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
@@ -152,14 +127,8 @@ function bttnOne () {
     end();
     addItem();
     removeItemOne();
-    
 }
-    
-
-
-btnTwo.addEventListener('click', bttnTwo);
 function bttnTwo () {
-    
     btnOne.style.display = 'block';
     btnTwo.style.display = 'block';
     const bg = document.getElementById(pageArr[i].id);
@@ -191,7 +160,6 @@ function doubleResponse () {
     }
 }
 // Need to know which sections to skip or re-prompt
-
 function addItem () {
     if (i === 6) {
         inventory.push(items[3]);
@@ -237,7 +205,6 @@ function rePrompt () {
     if (i === 3 || i === 7 || i === 28 || i === 35) {
         i-- 
     }
-
 }
 function choice1 () {
     if (btnOne.innerHTML==='A') {
@@ -254,9 +221,7 @@ function end () {
         img.style.width = '25%';
         let inv = document.getElementById('inventory')
         inv.remove()
-    }
-    
-    
+    } 
 }
 function removeItemOne () {
     if (i === 9) {
@@ -273,13 +238,10 @@ function removeItemTwo () {
         boatArray.push (items[0]);
     }
 }
-// save username input
-
 function openForm() {
     document.getElementById("userNameForm").style.display = "block";
     document.getElementById("popupForm").style.display = "block";
 }
-
 function submitAndCloseForm() {
     document.getElementById("userNameForm").style.display = "none";
     let userNameEntered = document.getElementById("nameTextBox").value;
@@ -287,12 +249,9 @@ function submitAndCloseForm() {
     return false;
 }
   
-// load username input into div
+// Load username input into div
 
 document.getElementById("userNameDiv").innerHTML=localStorage.getItem("username");
-
-
-// TODO: ADD AS CONDITION FOR THE FIN PAGE
 
 function skipEnd () {
     if (pageArr[i] === page35) {
@@ -315,17 +274,11 @@ for (let i = 0; i < testInv.length; i++) {
         
     }
 }
-
-
-
-
 // increment, modulus (cap), remainder (divide max by number what takes it to 0 (or 1))
-
 function nextPage () {  
     btnOne.innerHTML = pageArr[i].choice1;
     btnTwo.innerHTML = pageArr[i].choice2;
 }
-
 function resetAndReplay () {
     window.location.reload()
     localStorage.clear();
@@ -333,6 +286,3 @@ function resetAndReplay () {
 function backToHome (){
     window.location.href='index.html';
 }
-back.addEventListener('click', backToHome)
-// EVENT HANDLERS
-

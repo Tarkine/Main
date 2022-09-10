@@ -27,4 +27,5 @@ let start = document.getElementById('start-game')
 function startGame (){
     window.location.href='game.html';
 }
+// Adds event listener
 start.addEventListener('click', startGame)
